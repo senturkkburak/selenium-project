@@ -5,10 +5,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class CartPage extends BasePage{
-    By cartCountLocator = new By.ByCssSelector(".fl[id=\"cart-items\"]");
     By updateButtonLocator = By.className("fa-refresh");
     By deleteButtonLocator = new By.ByCssSelector("i.red-icon");
     public CartPage(WebDriver driver) {
@@ -55,6 +53,11 @@ public class CartPage extends BasePage{
     public boolean checkCartIfIsEmpty() {
         WebDriverWait deleteFeedback = new WebDriverWait(driver, Duration.ofSeconds(5));
         deleteFeedback.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("div.ky-swal-popup-success")));
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return isDisplayed(By.cssSelector("div.ky-swal-popup-success"));
     }
 }
