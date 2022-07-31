@@ -19,9 +19,9 @@ public class BaseTest {
 
     }
 
-//    @AfterAll
-//    public void tearDown(){
-//        driver.quit();
-//    }
+    @AfterAll
+    public void tearDown(){
+        driver.quit();
+    }
 
 }
